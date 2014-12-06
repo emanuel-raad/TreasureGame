@@ -4,14 +4,15 @@
  * 
  * Created on December 5, 2014, 3:52 PM
  */
+
 #include <string>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 using namespace std;
 
-#include "Map.h"
-#include "player.h"
+#include "MAP.h"
+#include "PLAYER.h"
 
 Map::Map(){
     row = 7;

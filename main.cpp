@@ -8,8 +8,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-#include "Map.h"
-#include "player.h"
+#include "MAP.h"
+#include "PLAYER.h"
 using namespace std;
 
 /*

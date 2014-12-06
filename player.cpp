@@ -8,7 +8,7 @@
 #include <iostream>
 using namespace std;
 
-#include "player.h"
+#include "PLAYER.h"
 
 player::player() {
     xpos = 0, ypos = 0, xposOld = 0, yposOld = 0, moveCount = 0;

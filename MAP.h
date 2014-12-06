@@ -8,7 +8,7 @@
 #ifndef MAP_H
 #define	MAP_H
 
-#include "player.h"
+#include "PLAYER.h"
 
 class Map : public player {
     int row, col;
