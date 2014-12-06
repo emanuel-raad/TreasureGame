@@ -11,14 +11,15 @@
 #include "PLAYER.h"
 
 class Map : public player {
-    int row, col;
-    bool firstRun;
-    std::string status;
+    int row, col;  //Size of the map
+    bool firstRun; //Not used yet. Determines if it's the first time the program 
+                   //is run.
+    std::string status; //String storing whether the player has won or lost.
     
     public:
-        std::string ** map;
-        std::string ** pos;
-        std::string coords[6];
+        std::string ** map; //Map that will be displayed to the player.
+        std::string ** pos; //Map with the traps and gold
+        std::string coords[6]; //Used for debugging. Coords for the traps and gold.
         Map();
         void setupMap();
         void printMap();

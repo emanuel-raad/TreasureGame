@@ -10,6 +10,12 @@
 
 class player {
     public:
+        /*
+         * xpos and ypos keep track of the player's current postition
+         * on the map. xpos = columns, ypos = rows.
+         * xposOld and yposOld are where the player was before moving.
+         */
+        
         int xpos, ypos, xposOld, yposOld, moveCount;
         player();
 };

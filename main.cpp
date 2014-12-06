@@ -18,16 +18,15 @@ using namespace std;
 int main(int argc, char** argv) {
 
     Map newMap;
-    
+    newMap.welcome();
     newMap.setupMap();
     newMap.printMap();
-    //newMap.welcome();
-    while (true) {
+    
+    do {
         newMap.move();
         newMap.printMap();
-        if (newMap.detect())
-            break;
-    }
+    } while (newMap.detect());
+    
     newMap.printAnswers();
     
     return 0;
