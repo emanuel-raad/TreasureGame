@@ -48,16 +48,17 @@ void Map::setupMap(){
         int x = rand() % row;
         int y = rand() % col;
         
-        cout << x << " " << y << endl;
+        coords[i] += to_string(x) + to_string(y);
+        
+        cout << coords[i] << endl;
         if (i == 5)
             pos[x][y] = "G";
         else
             pos[x][y] = "T";
     }
 
-    //position
     setPosition();
-    cout << "done!" << endl;
+    cout << "Setup properly!" << endl;
 }
 
 void Map::welcome(){
@@ -80,6 +81,18 @@ void Map::printMap(){
     }
     
     firstRun = false;
+}
+
+void Map::printAnswers(){
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < col; j++){
+            if (pos[i][j] != " ")
+                cout << pos[i][j];
+            else
+                cout << map[i][j];
+        }
+        cout << endl;
+    }
 }
 
 void Map::move(){

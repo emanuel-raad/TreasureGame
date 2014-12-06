@@ -12,6 +12,7 @@ class Map {
     int row, col, xpos, ypos, xposOld, yposOld;
     std::string ** map;
     std::string ** pos;
+    std::string coords[6];
     bool firstRun;
     public:
         Map();
@@ -21,7 +22,7 @@ class Map {
         void move();
         void setPosition();
         bool detect();
-        //void printAnswers();
+        void printAnswers();
         ~Map();
 };
 
