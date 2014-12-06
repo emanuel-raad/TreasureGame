@@ -18,17 +18,16 @@ int main(int argc, char** argv) {
 
     Map newMap;
     newMap.setupMap();
-    newMap.welcome();
+    newMap.printMap();
+    //newMap.welcome();
     while (true) {
         newMap.move();
         newMap.printMap();
         if (newMap.detect())
             break;
     }
-    
+    newMap.printAnswers();
     cout << "Thank you!" << endl;
     
     return 0;
 }
-
-//Add function that prints map with traps and gold
