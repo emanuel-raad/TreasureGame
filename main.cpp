@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include "Map.h"
+#include "player.h"
 using namespace std;
 
 /*
@@ -17,6 +18,7 @@ using namespace std;
 int main(int argc, char** argv) {
 
     Map newMap;
+    
     newMap.setupMap();
     newMap.printMap();
     //newMap.welcome();
@@ -27,7 +29,6 @@ int main(int argc, char** argv) {
             break;
     }
     newMap.printAnswers();
-    cout << "Thank you!" << endl;
     
     return 0;
 }

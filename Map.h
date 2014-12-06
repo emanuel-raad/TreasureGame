@@ -8,22 +8,26 @@
 #ifndef MAP_H
 #define	MAP_H
 
-class Map {
-    int row, col, xpos, ypos, xposOld, yposOld;
-    std::string ** map;
-    std::string ** pos;
-    std::string coords[6];
+#include "player.h"
+
+class Map : public player {
+    int row, col;
     bool firstRun;
+    std::string status;
+    
     public:
+        std::string ** map;
+        std::string ** pos;
+        std::string coords[6];
         Map();
         void setupMap();
         void printMap();
+        void setPosition();
         void welcome();
         void move();
-        void setPosition();
         bool detect();
         void printAnswers();
-        ~Map();
+        virtual ~Map();
 };
 
 #endif	/* MAP_H */

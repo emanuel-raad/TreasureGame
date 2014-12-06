@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=treasure
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/treasure
+CND_ARTIFACT_NAME_Debug=treasuregame
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/treasuregame
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=treasure.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/treasure.tar
+CND_PACKAGE_NAME_Debug=treasuregame.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/treasuregame.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=treasure
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/treasure
+CND_ARTIFACT_NAME_Release=treasuregame
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/treasuregame
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=treasure.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/treasure.tar
+CND_PACKAGE_NAME_Release=treasuregame.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/treasuregame.tar
 #
 # include compiler specific variables
 #

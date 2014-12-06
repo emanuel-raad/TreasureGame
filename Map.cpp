@@ -7,19 +7,15 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include <vector>
 #include <iostream>
 using namespace std;
 
 #include "Map.h"
+#include "player.h"
 
 Map::Map(){
     row = 7;
     col = 10;
-    xpos = 0;
-    ypos = 0;
-    xposOld = 0;
-    yposOld = 0;
     
     map = new string*[row];
     pos = new string*[row];
@@ -31,7 +27,7 @@ Map::Map(){
 
 //rewrite this function to clear map
 void Map::setupMap(){
-
+    cout << xpos << ypos << endl;
     firstRun = true;
     for(int i = 0; i < row; i++){
         for(int j = 0; j < col; j++){
@@ -69,7 +65,7 @@ void Map::welcome(){
 }
 
 void Map::printMap(){
-    
+    cout << string(50, '\n');
     cout << "ypos:" << ypos << endl;
     cout << "xpos:" << xpos << endl;
     
@@ -84,15 +80,21 @@ void Map::printMap(){
 }
 
 void Map::printAnswers(){
+    cout << string(50, '\n');
     for(int i = 0; i < row; i++){
+        string realMap, ansMap;
         for(int j = 0; j < col; j++){
+            realMap += map[i][j];
             if (pos[i][j] != " ")
-                cout << pos[i][j];
+                ansMap += pos[i][j];
             else
-                cout << map[i][j];
+                ansMap += map[i][j];
         }
-        cout << endl;
+        cout << realMap << "\t" << ansMap << endl;
     }
+    cout << status << endl;
+    cout << "Move count:" << moveCount << endl;
+    cout << "Thank you!" << endl;
 }
 
 void Map::move(){
@@ -120,7 +122,7 @@ void Map::move(){
         default:
             break;    
     }
-
+    moveCount += 1;
     setPosition();
 }
 
@@ -131,10 +133,11 @@ void Map::setPosition(){
 
 bool Map::detect(){
     if (pos[abs(ypos)][xpos] == "T")
-        cout << "You lose" << endl;
+        status += "You lose";
     else if (pos[abs(ypos)][xpos] == "G")
-        cout << "You win" << endl;
+        status += "You win";
 }
 Map::~Map(){
     delete [] map;
+    delete [] pos;
 }
