@@ -17,6 +17,12 @@ using namespace std;
 Map::Map(){
     row = 7;
     col = 10;
+    numberOfTraps = 5;
+    hiddenTile = "X";
+    blankTile = " ";
+    trap = "T";
+    gold = "G";
+    player = "P";
     
     map = new string*[row];
     pos = new string*[row];
@@ -34,15 +40,15 @@ void Map::setupMap(){
     //Fills map and pos array with values.
     for(int i = 0; i < row; i++){
         for(int j = 0; j < col; j++){
-            map[i][j] = "X";
-            pos[i][j] = " ";
+            map[i][j] = hiddenTile;
+            pos[i][j] = blankTile;
         }
     }
     
     double seed = time(0); //Randomly chooses 5 coords for the traps. 
     srand(seed);
 
-    for (int i = 0; i < 6 ; i++)
+    for (int i = 0; i < (numberOfTraps + 1) ; i++)
     {
         int x = rand() % row; //Random number between 0 and number of rows
         int y = rand() % col; //Random number between 0 and number of columns
@@ -50,10 +56,11 @@ void Map::setupMap(){
         coords[i] += to_string(x) + to_string(y); //Debugging coords
         
         //cout << coords[i] << endl;
-        if (i == 5)
-            pos[x][y] = "G"; //Sets 1 gold
+
+        if (i == (numberOfTraps))
+            pos[x][y] = gold; //Sets 1 gold
         else
-            pos[x][y] = "T"; //Sets 5 traps
+            pos[x][y] = trap; //Sets 5 traps
     }
 
     setPosition();
@@ -98,7 +105,7 @@ void Map::printAnswers(){
         string realMap, ansMap;
         for(int j = 0; j < col; j++){
             realMap += map[i][j];
-            if (pos[i][j] != " ")
+            if (pos[i][j] != blankTile)
                 ansMap += pos[i][j];
             else
                 ansMap += map[i][j];
@@ -145,16 +152,16 @@ void Map::move(){
  * Changes the value of where the player is to X (default value for hidden tiles)
  */
 void Map::setPosition(){
-    map[abs(yposOld)][xposOld] = "X";
-    map[abs(ypos)][xpos] = "P";
+    map[abs(yposOld)][xposOld] = hiddenTile;
+    map[abs(ypos)][xpos] = player;
 }
 
 bool Map::detect(){
-    if (pos[abs(ypos)][xpos] == "T"){
+    if (pos[abs(ypos)][xpos] == trap){
         status += "You lose";
         return false;
     }
-    else if (pos[abs(ypos)][xpos] == "G"){
+    else if (pos[abs(ypos)][xpos] == gold){
         status += "You win";
         return false;
     }

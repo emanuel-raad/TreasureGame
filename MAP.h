@@ -12,9 +12,15 @@
 
 class Map : public player {
     int row, col;  //Size of the map
+    int numberOfTraps;
     bool firstRun; //Not used yet. Determines if it's the first time the program 
                    //is run.
     std::string status; //String storing whether the player has won or lost.
+    std::string hiddenTile;  //Letters for drawing the map
+    std::string blankTile;
+    std::string trap;
+    std::string gold;
+    std::string player;
     
     public:
         std::string ** map; //Map that will be displayed to the player.
