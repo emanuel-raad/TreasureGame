@@ -18,11 +18,12 @@ Map::Map(){
     row = 7;
     col = 10;
     numberOfTraps = 5;
-    hiddenTile = "X";
+    hiddenTile = "-";
     blankTile = " ";
     trap = "T";
     gold = "G";
     player = "P";
+    distance = "Move first!";
     
     map = new string*[row];
     pos = new string*[row];
@@ -30,6 +31,12 @@ Map::Map(){
         map[i] = new string [col];
         pos[i] = new string [col];
     }
+    
+    coords = new int*[(numberOfTraps+1)];
+    for (int i = 0; i < (numberOfTraps+1); i++) {
+        coords[i] = new int [2];
+    }
+
 }
 
 
@@ -53,14 +60,19 @@ void Map::setupMap(){
         int x = rand() % row; //Random number between 0 and number of rows
         int y = rand() % col; //Random number between 0 and number of columns
         
-        coords[i] += to_string(x) + to_string(y); //Debugging coords
+        coords[i][0] += x; //Debugging coords
+        coords[i][1] += y;
         
         //cout << coords[i] << endl;
 
-        if (i == (numberOfTraps))
+        if (i == (numberOfTraps)){
             pos[x][y] = gold; //Sets 1 gold
-        else
+            goldPosX = x;
+            goldPosY = y;
+        }
+        else {
             pos[x][y] = trap; //Sets 5 traps
+        }
     }
 
     setPosition();
@@ -76,10 +88,9 @@ void Map::welcome(){
 }
 
 void Map::printMap(){
-    //Prints 50 newlines to "clear" the console
-    cout << string(50, '\n');
     //Current position
-    cout << "ypos:" << ypos << endl; 
+    cout << distance << endl;
+    cout << "ypos:" << ypos << endl;
     cout << "xpos:" << xpos << endl;
     
     //Prints map array. 2d array
@@ -89,13 +100,10 @@ void Map::printMap(){
         }
         cout << endl;
     }
-    
     firstRun = false;
 }
 
 void Map::printAnswers(){
-    //Prints newlines to "clear" the console
-    cout << string(50, '\n');
     
     /* Prints two maps side by side. realMap is the map with the player and
      * all the tiles hidden. ansMap is the map with the gold and treasure
@@ -142,7 +150,7 @@ void Map::move(){
             xpos -= 1;
             break;
         default:
-            break;    
+            break;   
     }
     moveCount += 1;
     setPosition();
@@ -166,6 +174,20 @@ bool Map::detect(){
         return false;
     }
     return true;
+}
+
+void Map::hotOrCold(){
+    //x:coords[5][0]    y:coords[5][1]
+    int xDistance = abs(goldPosX - xpos);
+    int yDistance = abs(goldPosY - ypos);
+    if (xDistance >= 3 || yDistance >= 3)
+        distance = "Cold!";
+    else
+        distance = "Hot!";
+}
+
+void Map::clear(){
+    cout << string(50, '\n');
 }
 
 Map::~Map(){

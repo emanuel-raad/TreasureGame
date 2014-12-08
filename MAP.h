@@ -13,6 +13,7 @@
 class Map : public player {
     int row, col;  //Size of the map
     int numberOfTraps;
+    int goldPosX, goldPosY;
     bool firstRun; //Not used yet. Determines if it's the first time the program 
                    //is run.
     std::string status; //String storing whether the player has won or lost.
@@ -21,12 +22,13 @@ class Map : public player {
     std::string trap;
     std::string gold;
     std::string player;
+    std::string distance;
     
     public:
         std::string ** map; //Map that will be displayed to the player.
         std::string ** pos; //Map with the traps and gold
-        std::string coords[6]; //Used for debugging. Coords for the traps and gold.
-        Map();
+        int ** coords; //Used for debugging. Coords for the traps and gold.
+        Map(); //constructor
         void setupMap();
         void printMap();
         void setPosition();
@@ -34,6 +36,8 @@ class Map : public player {
         void move();
         bool detect();
         void printAnswers();
+        void hotOrCold();
+        void clear();
         virtual ~Map();
 };
 

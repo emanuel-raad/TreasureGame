@@ -20,12 +20,14 @@ int main(int argc, char** argv) {
     newMap.welcome();
     newMap.setupMap();
     newMap.printMap();
-    
     do {
         newMap.move();
+        newMap.hotOrCold();
+        newMap.clear();
         newMap.printMap();
     } while (newMap.detect());
     
+    newMap.clear();
     newMap.printAnswers();
     
     return 0;
